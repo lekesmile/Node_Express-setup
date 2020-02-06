@@ -14,17 +14,22 @@ const UserSchema = new Schema({
     required: true
   },
 
-  books: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "BookSchema",
-      required: true
-    }
-  ],
+  password: {
+    type: String,
+    min: 5,
+    required: true
+  },
 
   bod: {
     type: Date
-  }
+  },
+
+  role: [
+    {
+      admin: { type: Boolean, default: false },
+      user: { type: Boolean, default: true }
+    }
+  ]
 });
 
 module.exports = mongoose.model("User", UserSchema);
