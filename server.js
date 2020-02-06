@@ -1,7 +1,12 @@
-const express = require("express");
-const app = express();
 require("dotenv");
 require('./database/index')
+const express = require("express");
+const app = express();
+const userRoute = require('./Routes/user');
+
+
+
+app.use(userRoute)
 
 app.get("/", (req, res) => {
   res.send(console.log("Hello"));
